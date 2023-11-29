@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns:x-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    {% include 'includes/apkseo.html' %}
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="{% static 'css/materialdesignicons.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Main Css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="{% static 'css/colors/default.css' %}" rel="stylesheet" type="text/css"  id="color-opt">
+    <link href="{% static 'css/app.css' %}" rel="stylesheet" type="text/css" >
+
+    <link href="{% static 'images/favicon.png' %}" rel="apple-touch-icon" sizes="180x180" >
+    <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/x-icon" sizes="32x32" >
+    <link href="{% static 'images/favicon.png' %}" rel="icon" type="image/x-icon" sizes="16x16" >
+    <link href="{% static 'images/favicon.png' %}" rel="mask-icon" rel="icon" type="image/x-icon">
+
+    <!-- Generic page styles -->
+    <!-- blueimp Gallery styles -->
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="{% static 'css/filedisplay.css' %}" type="text/css" >
+    <!-- CSS adjustments for browsers with JavaScript disabled -->
+
+
+</head>
+
+<body>
+    {% include 'includes/header.html' %}
+
+    <!-- Hero Start 快速导航页-->
+    <section class="bg-half bg-light d-table w-100" style="padding: 100px 0 35px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <div class="page-next-level">
+                        <h1 class="title">Select the file to start online decompilation</h1>
+                        <h2 class="anytext-h2 text-muted">Please upload a .apk or .aab file.</h2>
+
+                        <form class="form" id="fileUploadForm" method="post" action="/apk_decompiler_analyze.html" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-6">
+                                    <input type="hidden" value="{{ customerID }}" name="customerID" id="customerID" />
+                                    <input type="hidden" name="uploadFileName" id="uploadFileName" value="{{ uploadFileName }}" />
+                                    <input type="file" title="Select file" class="form-control" name="file" accept=".apk,.aab" />
+                                </div>
+                                <div class="col-md-auto">
+                                    <button type="button" onclick="uploadFile()" class="btn btn-success btn-rounded" style="background-image: linear-gradient(to right, #667eea 33%, #ff64bd 100%);">
+                                    Upload And Decompile
+                                </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+    <!--end section-->
+    {% if uploadFileName is not None %}
+    <section class="bg-half bg-light d-table w-100" style="padding: 5px 0 5px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-left">
+
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+    <!--end section-->
+    <section class="bg-half bg-light d-table w-100" style="padding: 5px 0 5px;">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-8">
+                    <div class="row ">
+                        <div class="col-3">
+                            <button type="button" onclick="goBack()" class="btn btn-success btn-rounded" src="{% static 'images/png/go_back.png' %}">
+                                    Go back
+                                </button>
+                        </div>
+                        <div class="col-auto">
+                            <li style="display:inline-block;margin-left: 10px;padding: 5px;">/Home {% for item in filePath %}
+                                <a href='/apk_decompiler_folder.html?uploadFileName={{ uploadFileName }}&customerID={{ customerID }}&filePath={{ item.urlPath }}'>/{{ item.displayPath }}</a> {% endfor %}
+                            </li>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-4" style="text-align: right;">
+                    <a href="/download_zip.html?uploadFileName={{ uploadFileName }}&customerID={{ customerID }}" target="_blank" class="buttonDownload" style="float: right;">Download Zip</a>
+                </div>
+
+
+
+            </div>
+            <div class="col">
+                <pre class="prettyprint" id="quine"><code class="com"></code></pre>
+            </div>
+
+
+        </div>
+        <!--end container-->
+        </div>
+    </section>
+    {% endif %}
+
+    <div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop='static'>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Message notification</h4>
+                </div>
+                <div class="modal-body">
+                    <h2>Decompiling. . .</h2>
+                    <span id="result"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="tempContext" value="{{ fileContextLines }}"> {% include 'includes/footer.html' %}
+    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-light back-to-top"><i
+        class="mdi mdi-arrow-up"></i></a> {% include 'includes/scripts.html' %}
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?autoload=true&amp;skin=sunburst&amp;lang=css" defer></script>
+
+    <script>
+        $(function() {
+            function htmlEscape(s) {
+                return s
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+            }
+
+            // this page's own source code
+            var quineHtml = htmlEscape($('#tempContext').val());
+
+            // Highlight the operative parts:
+            quineHtml = quineHtml.replace(
+                /&lt;script src[\s\S]*?&gt;&lt;\/script&gt;|&lt;!--\?[\s\S]*?--&gt;|&lt;pre\b[\s\S]*?&lt;\/pre&gt;/g,
+                '<span class="operative">$&<\/span>');
+
+            // insert into PRE
+            document.getElementById("quine").innerHTML = quineHtml;
+
+            document.addEventListener("DOMContentLoaded", function() {
+                this.querySelector(".icon").addEventListener("click", function() {
+                    let waitClass = "waiting",
+                        runClass = "running",
+                        cl = this.classList;
+
+                    if (!cl.contains(waitClass) && !cl.contains(runClass)) {
+                        cl.add(waitClass);
+                        setTimeout(function() {
+                            cl.remove(waitClass);
+                            setTimeout(function() {
+                                cl.add(runClass);
+                                setTimeout(function() {
+                                    cl.remove(runClass);
+                                }, 4000);
+                            }, 200);
+                        }, 1800);
+                    }
+                });
+            });
+            //禁用“确认重新提交表单”
+            window.history.replaceState(null, null, window.location.href);
+        })
+
+        function goBack() {
+            history.back();
+        }
+
+        function uploadFile() {
+            console.log(" form is run!")
+            $('#loading').modal('show');
+            $('#fileUploadForm').submit();
+        }
+
+        //$("form").on("change", ".file-upload-field", function () {
+        //
+        //    $(this).parent(".file-upload-wrapper").attr("data-text", $(this).val().replace(/.*(\/|\\)/, ''));
+        //    alert("upload");
+        //});
+    </script>
+</body>
+
+</html>

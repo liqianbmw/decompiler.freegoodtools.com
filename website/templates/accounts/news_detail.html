@@ -1,0 +1,119 @@
+{% extends 'accounts/layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% trans '登录用户是:' %} <b>{{ request.user.username }}</b>.
+    {% endif %}
+
+    <form method="post" novalidate action="{% url 'accounts:news-update' %}">
+        {% csrf_token %}
+{#         <div class="form-group row">#}
+{#            <label for="staticEmail" class="col-sm-2 col-form-label">_id: </label>#}
+{#            <div class="col-sm-10">#}
+{#                <input id="title" name="title" type="text" value="{{ id }}">#}
+{#            </div>#}
+{#        </div>#}
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">title: </label>
+            <div class="col-sm-10">
+                <input id="title" name="title" type="text" value="{{ title }}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">totallevel: </label>
+            <div class="col-sm-10">
+                <input id="totallevel" name="totallevel" type="text" value="{{ totallevel }}">
+            </div>
+        </div>
+         <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">typeid: </label>
+            <div class="col-sm-10">
+                <input id="typeid" name="typeid" type="text" value="{{ typeid }}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+             <label for="staticEmail" class="col-sm-2 col-form-label">keywords: </label>
+            <div class="col-sm-10">
+                <input id="keywords" type="text" name="keywords" value="{{ keywords }}">
+            </div>
+        </div>
+        <div class="form-group row">
+             <label for="staticEmail" class="col-sm-2 col-form-label">modelid: </label>
+            <div class="col-sm-10">
+                <input id="modelid" type="text" name="modelid" value="{{ modelid }}">
+            </div>
+        </div>
+        <div class="form-group row">
+             <label for="staticEmail" class="col-sm-2 col-form-label">arcrank: </label>
+            <div class="col-sm-10">
+                <input id="arcrank" type="text" name="arcrank" value="{{ arcrank }}">
+            </div>
+        </div>
+
+         <div class="form-group row">
+             <label for="staticEmail" class="col-sm-2 col-form-label">click: </label>
+            <div class="col-sm-10">
+                <input id="click" type="text" name="click" value="{{ click }}">
+            </div>
+        </div>
+        <div class="form-group row">
+             <label for="staticEmail" class="col-sm-2 col-form-label">resource: </label>
+            <div class="col-sm-10">
+                <input id="resource" type="text" name="resource" value="{{ resource }}">
+            </div>
+        </div>
+        <div class="form-group row">
+             <label for="staticEmail" class="col-sm-2 col-form-label">sendate: </label>
+            <div class="col-sm-10">
+                <input id="sendate" type="text" name="sendate" value="{{ sendate }}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">shortitle: </label>
+            <div class="col-sm-10">
+                <textarea id="shortitle" type="text" name="shortitle">{{ shortitle }}</textarea>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">updatedate: </label>
+            <div class="col-sm-10">
+                <input id="updatedate" type="text" name="updatedate" value="{{ updatedate }}">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">writer: </label>
+            <div class="col-sm-10">
+                <input id="writer" type="text" name="writer" value="{{ writer }}">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">contentimg1: </label>
+            <div class="col-sm-10">
+                <input id="contentimg1" type="text" name="contentimg1" value="{{ contentimg1 }}">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">titleimg1: </label>
+            <div class="col-sm-10">
+                <input id="titleimg1" type="text" name="titleimg1" value="{{ titleimg1 }}">
+
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="staticEmail" class="col-sm-2 col-form-label">content: </label>
+            <div class="col-sm-10">
+                <textarea id="content" name="content" style="width:700px;height:500px">{{ content }}</textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">保存</button>
+    </form>
+
+
+{% endblock %}
+

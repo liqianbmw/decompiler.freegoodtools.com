@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 10]><html  lang="pt-BR" class="iex"> <![endif]-->
+<!--[if (gt IE 10)|!(IE)]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8" />
+    <title>java decompiler</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="java decompiler,apk decompiler,java decompiler online,apk decompiler online" />
+    <meta name="keywords" content="java decompiler,apk decompiler,apk decompiler online,java decompiler online" />
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+    <!-- Bootstrap -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <!-- Icons -->
+    <link href="{% static 'css/materialdesignicons.min.css' %}" rel="stylesheet" type="text/css" />
+
+    <!-- Main Css -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href="{% static 'css/colors/default.css' %}" rel="stylesheet" id="color-opt">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon.png' %}">
+    <link rel="icon" type="/{% static 'images/png' %}" sizes="32x32" href="/staticimages/favicon-32x32.png' %}">
+    <link rel="icon" type="{% static 'image/png' %}" sizes="16x16" href="/staticimages/favicon-16x16.png' %}">
+    <link rel="mask-icon" href="{% static 'images/favicon.png' %}"> {% include 'includes/googlescript.html' %}
+</head>
+
+<body>
+    {% include 'includes/header.html' %}
+
+
+    <!-- Hero Start 快速导航页-->
+    <section class="bg-half bg-light d-table w-100" style="padding: 100px 0 35px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 text-center">
+                    <div class="page-next-level">
+                        <h1 class="title">Online decompile apk, aab, jar, class</h1>
+                        <h2 class="anytext-h2 text-muted">Provides one-stop online decompilation tools for .apk, .class, java, and .class. {{ static }}</h2>
+                        <div class="mt-3">
+                            <div class="mt-3">
+                                <a href="/java_Decompilers.html" class="btn anytext-button" title="java decompiler online" target="_blank" style="padding-top: 10px!important"><i class="mdi mdi-lead-pencil"></i>Online
+                                java decompile</a>
+                                <a href="/apk_Decompilers.html" class="btn anytext-button" title="apk decompiler online" target="_blank" style="padding-top: 10px!important"><i class="mdi mdi-chevron-down"></i>Online
+                                apk decompile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+    </section>
+    <!--end section-->
+
+    <div class="container mt-60">
+        <div class="row">
+            <div class="col-12 mt-4 pt-2">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="events-tab">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-12">
+                                <ul class="list-unstyled mt-4 mb-0">
+                                    <li class="mt-2">
+                                        <a href="/#" target="_blank" class="text-muted" title="What is a Smali code?">
+                                            <i class="mdi mdi-arrow-right text-primary me-2"></i>What is a Smali code?</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end col-->
+
+                            <div class="col-lg-4 col-md-6 col-12 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                                <ul class="list-unstyled mt-4 mb-0">
+                                    <li class="mt-2"><a href="/#" target="_blank" class="text-muted" title="How do I decompile a smalI
+                                    file to Java?"><i
+                                        class="mdi mdi-arrow-right text-primary me-2"></i>How do I decompile a smalI
+                                    file to Java?</a></li>
+                                </ul>
+                            </div>
+                            <!--end col-->
+                            <div class="col-lg-4 col-md-6 col-12 mt-4 mt-lg-0 pt-2 pt-lg-0 pt-2">
+                                <ul class="list-unstyled mt-4 mb-0">
+                                    <li class="mt-2"><a href="/#" target="_blank" class="text-muted" title="What is smalI in Android?"><i
+                                        class="mdi mdi-arrow-right text-primary me-2"></i>What is smalI in Android?</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--end col-->
+                        </div>
+                        <!--end row-->
+                    </div>
+                    <!--end teb pane-->
+                </div>
+                <!--end tab content-->
+            </div>
+            <!--end col-->
+        </div>
+        <!--end row-->
+    </div>
+    <!--end container-->
+    <section id="next" class="section" style="padding-top: 30px;">
+        <!-- 信息资讯-->
+        <div class="container mt-40">
+            <div class="row align-items-center">
+                <div class="col-lg-4 col-md-6">
+                    <a href="#" class="text-muted" title="APK" target="_blank">
+                        <img src="{% static 'images/index/android-logo.png' %}" class="img-fluid mx-auto d-block" style="height:100px;width:100px; align-text:center" alt="APK">
+                    </a>
+                </div>
+                <!--end col-->
+                <div class="col-lg-8 col-md-6 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="section-title ms-lg-5">
+                        <h4 class="title mb-4">How to decompile APK</h4>
+                        <ul class="list-unstyled text-muted">
+                            <a href="#" class="text-muted" title="APK" target="_blank">
+                                <p class="text-muted">
+                                    How do I decompile an apk file?</p>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+        <div class="container mt-60">
+            <div class="row">
+                <div class="col-12 mt-4 pt-2">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-events" role="tabpanel" aria-labelledby="events-tab">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-12">
+                                    <li class="mt-2">
+                                        <a href="/#" title="How do I decompile an apk
+                                            file" class="text-muted" target="_blank">
+                                            <i class="mdi mdi-arrow-right text-primary me-2">How do I decompile an apk
+                                            file?</i></a>
+                                    </li>
+                                    <li class="mt-2">
+                                        <a href="/#" title="APK Decompilation Tutorial Beginners Lesson 1: Android Basics" class="text-muted" target="_blank">
+                                            <i class="mdi mdi-arrow-right text-primary me-2">APK Decompilation Tutorial Beginners Lesson 1: Android Basics</i></a>
+                                    </li>
+
+                                </div>
+                                <!--end col-->
+                            </div>
+                            <!--end row-->
+                        </div>
+                        <!--end teb pane-->
+                    </div>
+                    <!--end tab content-->
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+
+        <!--  学校推荐 -->
+        <div class="container mt-40" style="padding-top: 30px;">
+            <div class="row align-items-center" style="padding-top: 30px">
+                <div class="col-lg-4 col-md-6 order-1 order-md-2">
+                    <a href="/#" class="text-muted" title="#" target="_blank">
+                        <img src="{% static 'images/index/smail-logo.png' %}" class="img-fluid mx-auto d-block" style="height:100px;width:100px; align-text:center" alt="">
+                    </a>
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-8 col-md-6 order-2 order-md-1 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="section-title ms-lg-5" style="align:right">
+                        <h4 class="title mb-4">How to decompile Smail</h4>
+                        <a href="/#" class="text-muted" title="#" target="_blank">
+                            <p class="text-muted"><span class="text-primary h5 me-2">
+                          <i class="mdi mdi-check-circle-outline align-middle">
+                              How do I open a Smali file on a Mac?  How do I edit a Smali file?
+                          </i>
+                      </span>
+                            </p>
+                        </a>
+                        <a href="/#" class="text-muted" title="#" target="_blank">
+                            <p class="text-muted"><span class="text-primary h5 me-2">
+                          <i class="mdi mdi-check-circle-outline align-middle">
+                              Can Smali convert to Java?  What is Smali and Baksmali?
+                          </i>
+                      </span>
+                            </p>
+                        </a>
+
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+
+
+        <div class="container mt-100 mt-60">
+            <div class="row align-items-center" style="padding-top: 30px">
+                <div class="col-lg-4 col-md-6">
+                    <a href="/#" class="text-muted" title="#" target="_blank">
+                        <img src="{% static 'images/index/java-logo.png' %}" class="img-fluid mx-auto d-block" style="height:100px;width:100px; align-text:center" alt="#">
+                    </a>
+                </div>
+                <!--end col-->
+
+                <div class="col-lg-8 col-md-6 order-2 order-md-1 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                    <div class="section-title me-lg-5">
+                        <h4 class="title mb-4">How to decompile a class</h4>
+                        <a href="/#" class="text-muted" title="#" target="_blank">
+                            <p class="text-muted">How to decompile a class</p>
+                        </a>
+                        <ul class="list-unstyled text-muted">
+                            <a href="/#" class="text-muted" title="#" target="_blank">
+                                <li class="mb-0"><span class="text-primary h5 me-2"><i
+                                    class="mdi mdi-check-circle-outline align-middle">How to decompile a class</i></span>
+
+                                </li>
+                            </a>
+                        </ul>
+
+                    </div>
+                </div>
+                <!--end col-->
+            </div>
+            <!--end row-->
+        </div>
+        <!--end container-->
+
+
+    </section>
+
+    {% include 'includes/footer.html' %}
+    <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-light back-to-top"><i
+        class="mdi mdi-arrow-up"></i></a> {% include 'includes/scripts.html' %}
+    <meta name="theme-color" content="#ffffff">
+
+</body>
+
+</html>

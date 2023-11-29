@@ -1,0 +1,15 @@
+{% extends 'accounts/layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+
+        {% trans '登录用户是:' %} <b>{{ request.user.username }}</b>.
+    {% endif %}
+
+
+
+
+{% endblock %}

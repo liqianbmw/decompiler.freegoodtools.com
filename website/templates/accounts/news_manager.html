@@ -1,0 +1,70 @@
+{% extends 'accounts/layouts/default/page.html' %}
+
+{% load i18n %}
+
+{% block content %}
+
+    {% if request.user.is_authenticated %}
+
+        {% trans '登录用户是:' %} <b>{{ request.user.username }}</b>.
+    {% endif %}
+        <div class="widget widget_search">
+                <form class="navbar-form" action="{% url 'accounts:news-manager' %}" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="keywords" value="{{ keywords }}" class="form-control" size="35" placeholder="请输入关键字"
+                               maxlength="15" autocomplete="off">
+                        <span class="input-group-btn">
+		                <button class="btn btn-default btn-search" name="search" type="submit">搜索</button>
+		</span></div>
+                </form>
+            </div>
+    {% if newsList %}
+
+        <div class="table-container">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>标题</th>
+                    <th>类型</th>
+                </tr>
+                </thead>
+                <tbody class="table-bordered">
+                {% for items in newsList %}
+                    <tr>
+                        <td>
+                            <a href="{% url 'accounts:news-detail' items.title %}">{{ items.title }}</a> </td>
+                        <td>{{ items.typeid }} </td>
+                    </tr>
+
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+       <ul class="pagination">
+
+                <li class="previous">
+                    {% if newsList.has_previous %}
+                        <a href="?page={{ newsList.previous_page_number }}">上一页</a>
+                    {% endif %}</li>
+                </li>
+                 <li class="previous">
+                    {% if newsList.has_next %}
+                        <a href="?page={{ newsList.next_page_number }}">下一页</a>
+                    {% endif %}
+                </li>
+                <li><span>共计 {{ newsList.number }} 页</span></li>
+            </ul>
+
+
+    {% else %}
+        <br>
+        <br>
+        <p>
+        <h5 style="line-height: 1.3">没有查到相关资讯。</h5>
+        </p>
+
+    {% endif %}
+
+
+{% endblock %}
+
