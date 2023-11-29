@@ -1,2 +1,5 @@
-# decompiler.freegoodtools.com
-decompiler.freegoodtools.com
+
+https://decompiler.freegoodtools.com
+
+Welcome to https://decompiler.freegoodtools.com
+
